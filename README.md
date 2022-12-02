@@ -1,24 +1,27 @@
 # momentum-test
 
-## Project setup
+Build by vue/cli and vue-cli-plugin-chrome-extension-cli
+
+## Compiles and hot-reloads for development
+
 ```
-yarn install
+yarn build-watch
 ```
 
-### Compiles and hot-reloads for development
+### Chrome extension manifest
+
 ```
-yarn serve
+/src/manifest.development.json
 ```
 
-### Compiles and minifies for production
+### Chrome extension entry
+
 ```
-yarn build
+/src/entry/content.ts
 ```
 
-### Lints and fixes files
-```
-yarn lint
-```
+### App entry file
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+```
+/src/app.vue
+```
