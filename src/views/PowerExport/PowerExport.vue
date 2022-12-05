@@ -28,13 +28,10 @@
   </n-grid>
 
   <div class="power-export">
-    <button class="button-new add-item baby-button" :disabled="isLoading">
+    <button class="button-new add-item baby-button" @click="onCancel">
       Cancel
     </button>
-    <button
-      class="button-new add-item primary baby-button"
-      :disabled="isLoading"
-    >
+    <button class="button-new add-item primary baby-button" @click="onExport">
       Export
     </button>
   </div>

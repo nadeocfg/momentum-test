@@ -1,6 +1,6 @@
 import { ColumnItemModel, ListItemModel } from "@/models/powerExportModels";
 
-interface PowerExportStateModel {
+export interface PowerExportStateModel {
   columns: ColumnItemModel[];
   lists: ListItemModel[];
 }

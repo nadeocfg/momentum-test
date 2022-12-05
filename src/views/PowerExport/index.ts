@@ -10,7 +10,6 @@ export default class PowerExport extends Vue {
   selectedColumns: string[] = [];
   selectedList: number | null = null;
   isSaveList = false;
-  isLoading = false;
 
   message = useMessage();
 
@@ -29,6 +28,8 @@ export default class PowerExport extends Vue {
     }
     this.lists = lists;
 
+    this.$store.commit("setIsLoading", false);
+
     // api
     //   .get(
     //     `https://momentum-backend-staging.herokuapp.com/power_export/v1/apps/28039162/columns`
@@ -44,6 +45,15 @@ export default class PowerExport extends Vue {
   onChangeList(value: number, listItem: ListItemModel) {
     this.selectedList = value;
     this.selectedColumns = listItem.columns;
+  }
+
+  onCancel() {
+    this.selectedColumns = [];
+    this.selectedList = null;
+  }
+
+  onExport() {
+    console.log("Export data");
   }
 }
 

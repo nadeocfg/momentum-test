@@ -4,6 +4,7 @@ import App from "../App.vue";
 import router from "../router";
 import store from "../store";
 import naive from "naive-ui";
+import LoaderWrapper from "../components/LoaderWrapper/LoaderWrapper.vue";
 
 // Check if .app-view-header.v2 element is rendered
 const observer = new MutationObserver(function (mutations, mutationInstance) {
@@ -30,6 +31,9 @@ const observer = new MutationObserver(function (mutations, mutationInstance) {
 
     // Use Naive UI liberary
     app.use(naive);
+
+    // Loader component
+    app.component("LoaderWrapper", LoaderWrapper);
 
     // Mount App
     app.mount("#momentum-demo");
