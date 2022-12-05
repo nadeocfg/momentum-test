@@ -10,6 +10,7 @@ export default class PowerExport extends Vue {
   selectedColumns: string[] = [];
   selectedList: number | null = null;
   isSaveList = false;
+  listName = "";
 
   message = useMessage();
 
@@ -50,9 +51,27 @@ export default class PowerExport extends Vue {
   onCancel() {
     this.selectedColumns = [];
     this.selectedList = null;
+    this.isSaveList = false;
+    this.listName = "";
   }
 
   onExport() {
+    let count = 0;
+    this.$store.commit("setPercentage", 0);
+    this.$store.commit("setIsLoading", true);
+
+    const interval = setInterval(() => {
+      this.$store.commit("setPercentage", count);
+      count += 20;
+
+      if (count === 100) {
+        clearInterval(interval);
+        this.$store.commit("setPercentage", 0);
+        this.$store.commit("setIsLoading", false);
+        this.onCancel();
+      }
+    }, 1000);
+
     console.log("Export data");
   }
 }

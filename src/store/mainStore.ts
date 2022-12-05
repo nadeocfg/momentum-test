@@ -5,7 +5,7 @@ export interface MainStoreModel {
 
 export default {
   state: {
-    percentage: 80,
+    percentage: 0,
     isLoading: true,
   },
   getters: {

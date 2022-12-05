@@ -23,15 +23,29 @@
       />
     </n-gi>
     <n-gi span="4">
+      <n-input
+        v-if="isSaveList"
+        v-model:value="listName"
+        type="text"
+        placeholder="Input layout name"
+      />
       <n-checkbox v-model:checked="isSaveList"> Save layout </n-checkbox>
     </n-gi>
   </n-grid>
 
   <div class="power-export">
-    <button class="button-new add-item baby-button" @click="onCancel">
+    <button
+      class="button-new add-item baby-button"
+      @click="onCancel"
+      :disabled="selectedColumns.length === 0"
+    >
       Cancel
     </button>
-    <button class="button-new add-item primary baby-button" @click="onExport">
+    <button
+      class="button-new add-item primary baby-button"
+      @click="onExport"
+      :disabled="selectedColumns.length === 0 || (isSaveList && !listName)"
+    >
       Export
     </button>
   </div>
