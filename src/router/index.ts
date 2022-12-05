@@ -3,7 +3,7 @@ import PowerExport from "../views/PowerExport/PowerExport.vue";
 
 const routes: Array<RouteRecordRaw> = [
   {
-    path: "/views/54920628",
+    path: "/:pathMatch(.*)*",
     name: "Power export",
     component: PowerExport,
   },

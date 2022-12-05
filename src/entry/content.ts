@@ -1,26 +1,43 @@
 // Init vue app
 import { createApp } from "vue";
-import App from "../app.vue";
+import App from "../App.vue";
 import router from "../router";
 import store from "../store";
+import naive from "naive-ui";
 
-// Create div element and append it to body tag
-const body = document.querySelector("body");
-const div = document.createElement("div");
-div.setAttribute("id", "app");
+// Check if .app-view-header.v2 element is rendered
+const observer = new MutationObserver(function (mutations, mutationInstance) {
+  // Create div element and append it to body tag
+  const wrapper = document.querySelector(".app-view-header.v2");
 
-if (body) {
-  body.appendChild(div);
-}
+  if (wrapper) {
+    // const wrapper = document.querySelector("body");
+    const div = document.createElement("div");
+    div.setAttribute("id", "momentum-demo");
 
-// Create App instance
-const app = createApp(App);
+    if (wrapper) {
+      wrapper.parentNode?.insertBefore(div, wrapper.nextSibling);
+    }
 
-// Use vue router
-app.use(router);
+    // Create App instance
+    const app = createApp(App);
 
-// Use vue store
-app.use(store);
+    // Use vue router
+    app.use(router);
 
-// Mount App
-app.mount("#app");
+    // Use vue store
+    app.use(store);
+
+    // Use Naive UI liberary
+    app.use(naive);
+
+    // Mount App
+    app.mount("#momentum-demo");
+    mutationInstance.disconnect();
+  }
+});
+
+observer.observe(document, {
+  childList: true,
+  subtree: true,
+});

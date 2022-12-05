@@ -1,9 +1,8 @@
 import { createStore } from "vuex";
+import powerExport from "./powerExportStore";
 
 export default createStore({
-  state: {},
-  getters: {},
-  mutations: {},
-  actions: {},
-  modules: {},
+  modules: {
+    powerExport,
+  },
 });
